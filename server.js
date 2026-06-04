@@ -19,7 +19,7 @@ app.post('/api/alterar', upload.single('image'), async (req, res) => {
         if (!req.file) return res.status(400).send('Nenhuma imagem enviada.');
 
         // ⚠️ COLE A SUA CHAVE DA STABILITY AI AQUI DENTRO DAS ASPAS:
-        const API_KEY = "SUA_CHAVE_AQUI"; 
+        const API_KEY = "sk-XgnhZKs2mx8GObxPtdV98skw9au6fgdzne5UF1KqXwffb5Zk"; 
 
         const formData = new FormData();
         formData.append('image', req.file.buffer, {
