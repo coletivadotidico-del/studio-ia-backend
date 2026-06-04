@@ -17,14 +17,11 @@ app.post('/api/alterar', upload.single('image'), async (req, res) => {
         const { prompt, strength } = req.body;
         if (!req.file) return res.status(400).send('Nenhuma imagem enviada.');
 
-        // ⚠️ LEMBRE-SE DE COLOCAR A SUA CHAVE DA STABILITY AI AQUI DENTRO DAS ASPAS:
-        const API_KEY = "sk-XgnhZKs2mx8GObxPtdV98skw9au6fgdzne5UF1KqXwffb5Zk"; 
+        // ⚠️ COLE A SUA CHAVE DA STABILITY AI AQUI DENTRO DAS ASPAS:
+        const API_KEY = "SUA_CHAVE_AQUI"; 
 
         const formData = new FormData();
         
-        // Passa a imagem diretamente. DICA: Para evitar o erro de dimensão,
-        // certifique-se de que a imagem de teste tenha uma proporção próxima a 1:1, 
-        // ou use prompts bem descritivos.
         formData.append('init_image', req.file.buffer, {
             filename: req.file.originalname,
             contentType: req.file.mimetype,
@@ -38,12 +35,6 @@ app.post('/api/alterar', upload.single('image'), async (req, res) => {
         const imageStrength = 1 - parseFloat(strength || 0.55);
         formData.append('image_strength', imageStrength.toString());
         formData.append('init_image_mode', 'IMAGE_STRENGTH');
-
-        // Especificando as dimensões exatas aceitas pelo Stable Diffusion XL (1024x1024)
-        // Isso força o motor deles a aceitar o processamento sem reclamar de tamanho!
-        // Delete apenas essas duas linhas:
-formData.append('width', '1024');
-formData.append('height', '1024');
 
         const response = await axios.post(
             'https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/image-to-image',
