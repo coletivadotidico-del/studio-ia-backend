@@ -10,7 +10,7 @@ const upload = multer();
 app.post('/api/alterar', upload.single('image'), async (req, res) => {
     try {
         const { prompt } = req.body;
-        const API_KEY = "sk-XgnhZKs2mx8GObxPtdV98skw9au6fgdzne5UF1KqXwffb5Zk"; // REINSERIR AQUI
+        const API_KEY = "sk-2yePsnsJOqnX7WmGQx6IKRYOyA8UIs3RlwzjANp2Rwp26BRP"; // REINSERIR AQUI
 
         // Prompt de Elite: Força o realismo fotográfico extremo
         const promptElite = `${prompt}, raw photo, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT4`;
