@@ -10,14 +10,13 @@ const upload = multer();
 
 app.post('/api/alterar', upload.single('image'), async (req, res) => {
     try {
-        // COLE SUA CHAVE AQUI
-        const API_KEY = "sk-XgnhZKs2mx8GObxPtdV98skw9au6fgdzne5UF1KqXwffb5Zk"; 
+        const API_KEY = "sk-PICMHOXkE1uiLfPk0Uumgexz203aXZ2LKSJ36GE3QImz2Sge"; 
         const formData = new FormData();
         
         formData.append('init_image', req.file.buffer, 'img.png');
-        formData.append('text_prompts[0][text]', req.body.prompt + ", photorealistic, 8k, cinematic lighting");
+        formData.append('text_prompts[0][text]', req.body.prompt + ", photorealistic, 8k, ultra-detailed skin texture, cinematic lighting");
         formData.append('text_prompts[0][weight]', 1);
-        formData.append('image_strength', 0.45);
+        formData.append('image_strength', 0.40);
         formData.append('init_image_mode', 'IMAGE_STRENGTH');
 
         const response = await axios.post(
@@ -28,7 +27,7 @@ app.post('/api/alterar', upload.single('image'), async (req, res) => {
 
         res.json({ image: `data:image/png;base64,${response.data.artifacts[0].base64}` });
     } catch (error) {
-        res.status(500).send("Erro na conexão com Stability AI");
+        res.status(500).send("Erro na comunicação com a IA");
     }
 });
 
