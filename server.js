@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 // Rota que o seu site chama
 app.post('/api/alterar', upload.single('image'), async (req, res) => {
     try {
-        const API_KEY = "SUA_CHAVE_AQUI"; // Cole sua chave aqui
+        const API_KEY = "sk-PICMHOXkE1uiLfPk0Uumgexz203aXZ2LKSJ36GE3QImz2Sge"; // Cole sua chave aqui
         if (!req.file) return res.status(400).send("Sem imagem");
 
         const formData = new FormData();
