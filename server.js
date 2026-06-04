@@ -1,3 +1,5 @@
+const cors = require('cors');
+app.use(cors()); // Isso libera o site do Netlify para chamar o seu servidor
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
