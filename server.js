@@ -11,7 +11,7 @@ const upload = multer();
 app.post('/api/alterar', upload.single('image'), async (req, res) => {
     try {
         // COLE SUA CHAVE AQUI
-        const API_KEY = "sk-PICMHOXkE1uiLfPk0Uumgexz203aXZ2LKSJ36GE3QImz2Sge"; 
+        const API_KEY = "sk-XgnhZKs2mx8GObxPtdV98skw9au6fgdzne5UF1KqXwffb5Zk"; 
         const formData = new FormData();
         
         formData.append('init_image', req.file.buffer, 'img.png');
